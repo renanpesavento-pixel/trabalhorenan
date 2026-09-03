@@ -1,78 +1,146 @@
-:root {
-    --bg-cor: #0e1017;
-    --card-bg: #1b1f2b;
-    --texto-cor: #e2e8f0;
-    --detalhe-cor: #10b981;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-cor);
-    color: var(--texto-cor);
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #111827, #166534);
+    min-height: 100vh;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
-    padding: 3rem;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 40px;
 }
 
-/* Espaço tridimensional do cartão */
+
+/* CARD */
+
 .cartao {
     width: 300px;
-    height: 200px;
-    perspective: 1000px; /* Efeito de profundidade 3D */
-}
-
-/* O elemento interno que vai girar */
-.cartao__conteudo {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: transform 0.6s ease;
-    transform-style: preserve-3d;
+    height: 220px;
+    perspective: 1000px;
     cursor: pointer;
 }
 
-/* Classe JS para girar o cartão */
-.cartao.virado .cartao__conteudo {
+
+/* CONTEÚDO DO CARD */
+
+.cartao__conteudo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+
+/* QUANDO O CARD ESTIVER ATIVO */
+
+.cartao.ativo .cartao__conteudo {
     transform: rotateY(180deg);
 }
 
-/* Estilo comum para Frente e Verso */
+
+/* FRENTE E VERSO */
+
 .cartao__frente,
 .cartao__verso {
     position: absolute;
+
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Oculta a face invertida */
-    border: 2px solid var(--detalhe-cor);
-    border-radius: 12px;
-    background-color: var(--card-bg);
-    padding: 1.5rem;
-    box-sizing: border-box;
+
+    padding: 30px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     text-align: center;
+
+    border-radius: 15px;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos específicos da Frente */
+
+/* FRENTE */
+
+.cartao__frente {
+    background-color: white;
+    color: #222;
+}
+
 .cartao__frente h3 {
-    color: var(--detalhe-cor);
-    margin-bottom: 1rem;
+    color: #166534;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-/* Estilos específicos do Verso */
+.cartao__frente p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* VERSO */
+
 .cartao__verso {
-    transform: rotateY(180deg); /* Começa de cabeça para baixo/invertido */
-    background-color: #242b3b;
+    background-color: #22c55e;
+    color: white;
+
+    transform: rotateY(180deg);
 }
 
 .cartao__verso h3 {
-    color: #34d399;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cartao__verso p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* EFEITO AO PASSAR O MOUSE */
+
+.cartao:hover {
+    transform: scale(1.03);
+    transition: transform 0.2s;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 900px) {
+
+    #container {
+        flex-direction: column;
+    }
+
+    .cartao {
+        width: 90%;
+        max-width: 350px;
+    }
 }
