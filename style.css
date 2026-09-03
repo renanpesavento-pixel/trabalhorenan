@@ -1,1 +1,104 @@
+:root {
+    --bg-cor: #0e1017;
+    --card-bg: #1b1f2b;
+    --texto-cor: #e2e8f0;
+    --detalhe-cor: #10b981; /* Verde focado em saúde/nutrição */
+}
 
+body {
+    background-color: var(--bg-cor);
+    color: var(--texto-cor);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 2rem;
+}
+
+.cartao {
+    margin: 1rem;
+    height: 14rem;
+    width: 20rem;
+    perspective: 1000px; /* Necessário para o efeito 3D */
+}
+
+.cartao__conteudo {
+    background-color: var(--card-bg);
+    border: 2px solid var(--detalhe-cor);
+    border-radius: 12px;
+    text-align: center;
+    height: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Quando o cartão tiver a classe .virado, ele se inverte */
+.cartao.virado .cartao__conteudo {
+    transform: rotateY(180deg);
+}
+
+.cartao__conteudo h3 {
+    color: var(--detalhe-cor);
+    border-bottom: 1px solid var(--detalhe-cor);
+    padding-bottom: 0.5rem;
+    margin: 0;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cartao__conteudo__pergunta,
+.cartao__conteudo__resposta {
+    backface-visibility: hidden; /* Esconde o verso enquanto não vira */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.cartao__conteudo__pergunta p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cartao__conteudo__resposta {
+    position: absolute;
+    top: 3.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    transform: rotateY(180deg); /* Já começa invertido no verso */
+}
+
+.cartao__conteudo__resposta p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+footer {
+    background-color: #050608;
+    color: #94a3b8;
+    text-align: center;
+    padding: 1.2rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
