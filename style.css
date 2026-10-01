@@ -1,146 +1,56 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+margin:0;
+padding:0 ;
 }
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #111827, #166534);
-    min-height: 100vh;
+.cabecalho{
+padding:15px 25px;
+display: flex;
+justify-content:space-between;
+align-items: center;
+background-color: chartreuse;
 }
-
-main {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cartao{
+width:260px;
+height:200px;
 }
-
-#container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 40px;
+.cartao-imagem{
+width:100%;
 }
-
-
-/* CARD */
-
-.cartao {
-    width: 300px;
-    height: 220px;
-    perspective: 1000px;
-    cursor: pointer;
-}
-
-
-/* CONTEÚDO DO CARD */
-
-.cartao__conteudo {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-}
-
-
-/* QUANDO O CARD ESTIVER ATIVO */
-
-.cartao.ativo .cartao__conteudo {
-    transform: rotateY(180deg);
-}
-
-
-/* FRENTE E VERSO */
-
-.cartao__frente,
-.cartao__verso {
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    padding: 30px;
-
+body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    border-radius: 15px;
-
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    min-height: 100vh;
+    background-color: antiquewhite;
+  
 }
-
-
-/* FRENTE */
-
-.cartao__frente {
-    background-color: white;
-    color: #222;
+main{
+flex:1;
+display: flex;
+align-items: center;
 }
-
-.cartao__frente h3 {
-    color: #166534;
-    font-size: 24px;
-    margin-bottom: 20px;
+.cabecalho{
+    color: aliceblue;
+    text-decoration: none;
 }
+h1{
+color: aliceblue;
+font-size:24px;
 
-.cartao__frente p {
-    font-size: 16px;
-    line-height: 1.5;
 }
-
-
-/* VERSO */
-
-.cartao__verso {
-    background-color: #22c55e;
-    color: white;
-
-    transform: rotateY(180deg);
+footer{
+background-color: blue;
+padding:15px 25px;
+color: black;
 }
+.cartao-interno{
+position: relative;
+transition: transform 0.8s;
+transform-style:preserve-3d;
 
-.cartao__verso h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
 }
-
-.cartao__verso p {
-    font-size: 16px;
-    line-height: 1.5;
+.cartao:hover .cartao-interno{
+transform:rotateY(180deg);
 }
-
-
-/* EFEITO AO PASSAR O MOUSE */
-
-.cartao:hover {
-    transform: scale(1.03);
-    transition: transform 0.2s;
-}
-
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 900px) {
-
-    #container {
-        flex-direction: column;
-    }
-
-    .cartao {
-        width: 90%;
-        max-width: 350px;
-    }
+.cartao-frente, .cartao-verso{
+    
 }
